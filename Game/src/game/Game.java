@@ -6,7 +6,6 @@ public class Game {
      */
     public static void main(String[] args) {
         System.out.println("Hello Tree!");
-        System.out.println("Hello World!");
-        System.out.println("Hallo Welt!");
+        System.out.println("Hallo");
     }
 }
