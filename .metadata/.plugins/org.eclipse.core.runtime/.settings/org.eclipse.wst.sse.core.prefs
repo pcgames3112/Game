@@ -1,3 +1,2 @@
-#Wed Oct 10 16:20:29 CEST 2012
-task-tag-projects-already-scanned=Game
 eclipse.preferences.version=1
+task-tag-projects-already-scanned=Game,GameServer
