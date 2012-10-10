@@ -40,7 +40,7 @@ public class Game {
     		}
     		
     		handleKeyEvents();
-    		//
+    		
     		
     		Display.update();
     	}
@@ -52,7 +52,7 @@ public class Game {
 	protected void handleKeyEvents() {
 		while (Keyboard.next()) {
 			if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) {
-				finished = true;
+			    Display.
 			}
 		}
 		

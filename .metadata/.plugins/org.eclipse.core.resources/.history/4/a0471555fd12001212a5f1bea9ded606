@@ -7,8 +7,6 @@ import org.lwjgl.opengl.DisplayMode;
 
 public class Game {
 
-	boolean finished = false;
-	
     /**
      * @param args the command line arguments
      */
@@ -31,16 +29,10 @@ public class Game {
     	
     	// init OPGL here
     	
-    	
-    	
-    	while(!finished) {
-    		
-    		if(Display.isCloseRequested()) {
-    			finished = true;
-    		}
+    	while(!Display.isCloseRequested()) {
     		
     		handleKeyEvents();
-    		//
+    		
     		
     		Display.update();
     	}
@@ -52,7 +44,7 @@ public class Game {
 	protected void handleKeyEvents() {
 		while (Keyboard.next()) {
 			if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) {
-				finished = true;
+			    
 			}
 		}
 		

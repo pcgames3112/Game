@@ -33,14 +33,14 @@ public class Game {
     	
     	
     	
-    	while(!finished) {
+    	while(finished) {
     		
     		if(Display.isCloseRequested()) {
     			finished = true;
     		}
     		
     		handleKeyEvents();
-    		//
+    		
     		
     		Display.update();
     	}
@@ -52,7 +52,7 @@ public class Game {
 	protected void handleKeyEvents() {
 		while (Keyboard.next()) {
 			if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) {
-				finished = true;
+			    Display.
 			}
 		}
 		
