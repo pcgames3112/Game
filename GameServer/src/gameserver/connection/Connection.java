@@ -5,6 +5,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class Connection extends Thread{
@@ -43,7 +44,11 @@ public class Connection extends Thread{
                     String text = messages.get(0);
                     //send to client
                     try{
-                        out.writeUTF(text);
+                        //out.writeUTF(text);
+                        out.writeByte(42);
+                        out.writeShort(1);
+                        out.writeShort(text.length());
+                        out.write(text.getBytes(Charset.forName("UTF-8")));
                         //out.writeUTF("Eine Nachricht");
                         //out.flush();
                         messages.remove(text);
