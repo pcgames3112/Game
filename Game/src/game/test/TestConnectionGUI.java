@@ -1,6 +1,6 @@
 package game.test;
 
-import connection.ConnectionThread;
+import game.connection.ConnectionThread;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;

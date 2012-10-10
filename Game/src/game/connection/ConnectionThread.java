@@ -1,6 +1,5 @@
-package connection;
+package game.connection;
 
-import connection.ReadingThread;
 import game.test.TestConnectionGUI;
 import java.io.*;
 import java.net.*;

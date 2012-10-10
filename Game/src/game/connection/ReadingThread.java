@@ -1,4 +1,4 @@
-package connection;
+package game.connection;
 
 import game.test.TestConnectionGUI;
 import java.io.DataInputStream;
