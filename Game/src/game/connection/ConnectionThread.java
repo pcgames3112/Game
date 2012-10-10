@@ -4,6 +4,8 @@ import game.test.TestConnectionGUI;
 import java.io.*;
 import java.net.*;
 
+import java.nio.charset.Charset;
+
 public class ConnectionThread extends Thread {
 
     private Socket clientSocket;
@@ -21,7 +23,7 @@ public class ConnectionThread extends Thread {
     public ConnectionThread(String hostname, int port, TestConnectionGUI p) throws IOException {
         hostName = hostname;
         Port = port;
-           _parent = p;
+        _parent = p;
         running = true;
     }
 
@@ -91,7 +93,11 @@ public class ConnectionThread extends Thread {
 
     public void Send(String text) {
         try {
-            out.writeUTF(text);
+            //out.writeUTF(text);
+            out.writeByte(42);
+            out.writeShort(1);
+            out.writeShort(text.length());
+            out.write(text.getBytes(Charset.forName("UTF-8")));
         } catch (Exception e) {
             e.printStackTrace();
         }
