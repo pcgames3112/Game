@@ -1,2 +1,9 @@
 .metadata
 Game/bin
+Game/build
+Game/dist
+GameServer/bin
+GameServer/build
+GameServer/dist
+/Game/nbproject/private/
+/GameServer/nbproject/private/
