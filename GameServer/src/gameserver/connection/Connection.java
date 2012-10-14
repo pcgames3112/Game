@@ -85,8 +85,6 @@ public class Connection extends Thread{
             if (socket != null) {
                 socket.close();
             }
-            
-            server.removeClient(this);
         } catch(IOException e){
             e.printStackTrace();
         }

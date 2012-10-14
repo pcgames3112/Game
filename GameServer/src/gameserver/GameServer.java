@@ -74,6 +74,7 @@ public class GameServer extends Thread {
         if (client != null){
             client.close();
             broadcast("[Server] Connection Lost: " + client.socket.getRemoteSocketAddress());
+            clients.remove(client);
         }
     }
     
