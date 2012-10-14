@@ -96,8 +96,9 @@ public class ConnectionThread extends Thread {
             //out.writeUTF(text);
             out.writeByte(42);
             out.writeShort(1);
-            out.writeShort(text.length());
-            out.write(text.getBytes(Charset.forName("UTF-8")));
+            byte[] bytes = text.getBytes(Charset.forName("UTF-8"));
+            out.writeShort(bytes.length);
+            out.write(bytes);
         } catch (Exception e) {
             e.printStackTrace();
         }

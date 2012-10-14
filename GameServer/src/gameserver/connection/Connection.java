@@ -39,7 +39,7 @@ public class Connection extends Thread{
     @Override
     public void run(){
         while(running){
-            boolean b = true;
+            boolean b = true;//silly problems if removed??
             if (messages.size() > 0){
                 //System.out.println("Send->" + System.currentTimeMillis());
                 synchronized(this){
@@ -49,8 +49,9 @@ public class Connection extends Thread{
                         //out.writeUTF(text);
                         out.writeByte(42);
                         out.writeShort(1);
-                        out.writeShort(text.length());
-                        out.write(text.getBytes(Charset.forName("UTF-8")));
+                        byte[] bytes = text.getBytes(Charset.forName("UTF-8"));
+                        out.writeShort(bytes.length);
+                        out.write(bytes);
                         //out.writeUTF("Eine Nachricht");
                         //out.flush();
                         messages.remove(text);
