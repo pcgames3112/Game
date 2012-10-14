@@ -5,8 +5,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.nio.charset.Charset;
+//import java.nio.charset.Charset;
 import java.util.ArrayList;
+import packets.Packet;
 
 public class Connection extends Thread{
     public ArrayList<String> messages = new ArrayList<String>();
@@ -47,11 +48,13 @@ public class Connection extends Thread{
                     //send to client
                     try{
                         //out.writeUTF(text);
-                        out.writeByte(42);
+                        /*out.writeByte(42);
                         out.writeShort(1);
                         byte[] bytes = text.getBytes(Charset.forName("UTF-8"));
                         out.writeShort(bytes.length);
-                        out.write(bytes);
+                        out.write(bytes);*/
+                        Packet p = new Packet(text);
+                        out.write(p.getData());
                         //out.writeUTF("Eine Nachricht");
                         //out.flush();
                         messages.remove(text);

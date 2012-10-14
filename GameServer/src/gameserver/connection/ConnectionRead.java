@@ -2,8 +2,9 @@ package gameserver.connection;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.net.SocketTimeoutException;
-import java.nio.charset.Charset;
+//import java.net.SocketTimeoutException;
+//import java.nio.charset.Charset;
+import packets.Packet;
 import packets.PacketReader;
 
 public class ConnectionRead extends Thread {
@@ -23,7 +24,9 @@ public class ConnectionRead extends Thread {
                 if (ret == 0) {
                     //Received good Packet
                     byte[] bytes = preader.GetData();
-                    String text = new String(bytes, Charset.forName("UTF-8"));
+                    Packet p = new Packet(bytes);
+                    String text = p.toString();
+                    //String text = new String(bytes, Charset.forName("UTF-8"));
                     System.out.println(text);
                     client.Receive(text);
                 } else if(ret == -1){

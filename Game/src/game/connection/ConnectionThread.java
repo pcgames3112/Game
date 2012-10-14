@@ -4,7 +4,8 @@ import game.test.TestConnectionGUI;
 import java.io.*;
 import java.net.*;
 
-import java.nio.charset.Charset;
+//import java.nio.charset.Charset;
+import packets.Packet;
 
 public class ConnectionThread extends Thread {
 
@@ -94,11 +95,13 @@ public class ConnectionThread extends Thread {
     public void Send(String text) {
         try {
             //out.writeUTF(text);
-            out.writeByte(42);
+            Packet p = new Packet(text);
+            /*out.writeByte(42);
             out.writeShort(1);
             byte[] bytes = text.getBytes(Charset.forName("UTF-8"));
             out.writeShort(bytes.length);
-            out.write(bytes);
+            out.write(bytes);*/
+            out.write(p.getData());
         } catch (Exception e) {
             e.printStackTrace();
         }

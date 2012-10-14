@@ -4,7 +4,7 @@ import game.test.TestConnectionGUI;
 import java.io.DataInputStream;
 import packets.*;
 
-import java.nio.charset.Charset;
+//import java.nio.charset.Charset;
 
 public class ReadingThread extends Thread {
 
@@ -22,7 +22,9 @@ public class ReadingThread extends Thread {
                 if (ret == 0) {
                     //Received good Packet
                     byte[] bytes = preader.GetData();
-                    String text = new String(bytes, Charset.forName("UTF-8"));
+                    Packet p = new Packet(bytes);
+                    String text = p.toString();
+                    //String text = new String(bytes, Charset.forName("UTF-8"));
                     System.out.println(text);
                     ncc.addText(text);
                 } else if(ret == -1){

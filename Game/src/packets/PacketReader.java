@@ -11,7 +11,6 @@ public class PacketReader {
     //4 XXXXX -> 1 Byte per per length
     private byte[] bytes;
     private short packetId;
-    public static final byte MAGICNUMBER = 42;
     
     public byte[] GetData(){
         return bytes;
@@ -25,7 +24,7 @@ public class PacketReader {
     public int ReadData(DataInputStream stream){
         try {
             //Check Magic Number
-            if (stream.readByte() != MAGICNUMBER) {
+            if (stream.readByte() != Constants.MAGICNUMBER) {
                 System.out.println("Invalid Packet!");
                 return 1;
             }
