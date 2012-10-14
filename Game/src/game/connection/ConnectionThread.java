@@ -49,9 +49,9 @@ public class ConnectionThread extends Thread {
                 //say Hello
                 //out.writeUTF("Hello");
                 //Wait for Welcome Message
-                String text = in.readUTF();
-                System.out.println(text);
-                _parent.addText(text);
+                //String text = in.readUTF();
+                //System.out.println(text);
+                //_parent.addText(text);
 
                 reader.start();
                 //writer.start();

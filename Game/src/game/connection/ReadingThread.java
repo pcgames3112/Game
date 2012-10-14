@@ -17,12 +17,19 @@ public class ReadingThread extends Thread {
     public void run() {
         while (running) {
             try {
-                //String text = in.readUTF();
-                if (preader.ReadData(in)) {
+                //Try reading Data from Stream
+                int ret = preader.ReadData(in);
+                if (ret == 0) {
+                    //Received good Packet
                     byte[] bytes = preader.GetData();
                     String text = new String(bytes, Charset.forName("UTF-8"));
                     System.out.println(text);
                     ncc.addText(text);
+                } else if(ret == -1){
+                    //Bad Connection, close it!!
+                    //TODO: Connection Fail Handling in Client
+                } else {
+                    //Received bad Packet, ignore it
                 }
             } catch (Exception e) {
                 e.printStackTrace();

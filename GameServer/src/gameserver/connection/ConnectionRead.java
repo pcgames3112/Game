@@ -18,16 +18,23 @@ public class ConnectionRead extends Thread {
     public void run() {
         while (running) {
             try {
-                //String text = in.readUTF();
-                if (preader.ReadData(in)) {
+                //Try reading Data from Stream
+                int ret = preader.ReadData(in);
+                if (ret == 0) {
+                    //Received good Packet
                     byte[] bytes = preader.GetData();
                     String text = new String(bytes, Charset.forName("UTF-8"));
                     System.out.println(text);
                     client.Receive(text);
+                } else if(ret == -1){
+                    //Bad Connection, close it!!
+                    client.server.removeClient(client);
+                } else {
+                    //Received bad Packet, ignore it
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                client.close();
+                client.server.removeClient(client);
             }
         }
     }

@@ -17,12 +17,17 @@ public class PacketReader {
         return bytes;
     }
     
-    public boolean ReadData(DataInputStream stream){
+    /**
+     * Reads Data from input Stream encoded in "our Packet Format"
+     * @param stream
+     * @return 0=OK, 1=Bad Packet, -1=Connection Error
+     */
+    public int ReadData(DataInputStream stream){
         try {
             //Check Magic Number
             if (stream.readByte() != MAGICNUMBER) {
                 System.out.println("Invalid Packet!");
-                return false;
+                return 1;
             }
             //Get Packet ID
             packetId = stream.readShort();
@@ -32,12 +37,12 @@ public class PacketReader {
             //Read Packet Body
             length = stream.read(bytes);
             if (length <= 0) {
-                return false;
+                return 1;
             }
-            return true;
+            return 0;
         } catch(IOException e){
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
 }

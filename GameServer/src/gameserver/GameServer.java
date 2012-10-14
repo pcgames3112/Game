@@ -71,8 +71,10 @@ public class GameServer extends Thread {
     }
     
     public void removeClient(Connection client){
-        clients.remove(client);
-        broadcast("[Server] Connection Lost: " + client.socket.getRemoteSocketAddress());
+        if (client != null){
+            client.close();
+            broadcast("[Server] Connection Lost: " + client.socket.getRemoteSocketAddress());
+        }
     }
     
     public void removeAllClients(){

@@ -16,9 +16,11 @@ public class Connection extends Thread{
     public Socket socket;
     public String username;
     
+    
+    protected GameServer server;
+    
     private ConnectionRead reader;
     private DataOutputStream out;
-    private GameServer server;
     
     public Connection(Socket socket, String username, GameServer server){
         this.socket = socket;
