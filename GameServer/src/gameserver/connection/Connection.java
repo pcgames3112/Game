@@ -5,7 +5,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+//import java.nio.charset.Charset;
 import java.util.ArrayList;
+import packets.Packet;
 
 public class Connection extends Thread{
     public ArrayList<String> messages = new ArrayList<String>();
@@ -15,9 +17,11 @@ public class Connection extends Thread{
     public Socket socket;
     public String username;
     
+    
+    protected GameServer server;
+    
     private ConnectionRead reader;
     private DataOutputStream out;
-    private GameServer server;
     
     public Connection(Socket socket, String username, GameServer server){
         this.socket = socket;
@@ -36,14 +40,21 @@ public class Connection extends Thread{
     @Override
     public void run(){
         while(running){
-            boolean b = true;
+            boolean b = true;//silly problems if removed??
             if (messages.size() > 0){
                 //System.out.println("Send->" + System.currentTimeMillis());
                 synchronized(this){
                     String text = messages.get(0);
                     //send to client
                     try{
-                        out.writeUTF(text);
+                        //out.writeUTF(text);
+                        /*out.writeByte(42);
+                        out.writeShort(1);
+                        byte[] bytes = text.getBytes(Charset.forName("UTF-8"));
+                        out.writeShort(bytes.length);
+                        out.write(bytes);*/
+                        Packet p = new Packet(text);
+                        out.write(p.getData());
                         //out.writeUTF("Eine Nachricht");
                         //out.flush();
                         messages.remove(text);
@@ -78,8 +89,6 @@ public class Connection extends Thread{
             if (socket != null) {
                 socket.close();
             }
-            
-            server.removeClient(this);
         } catch(IOException e){
             e.printStackTrace();
         }

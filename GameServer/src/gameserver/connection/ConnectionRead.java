@@ -2,26 +2,42 @@ package gameserver.connection;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.net.SocketTimeoutException;
+//import java.net.SocketTimeoutException;
+//import java.nio.charset.Charset;
+import packets.Packet;
+import packets.PacketReader;
 
 public class ConnectionRead extends Thread {
 
     protected boolean running;
     private DataInputStream in;
     private Connection client;
+    
+    private PacketReader preader;
 
     @Override
     public void run() {
         while (running) {
             try {
-                String text = in.readUTF();
-                System.out.println(text);
-                client.Receive(text);
-            } catch (SocketTimeoutException e) {
-                System.out.println("ReadTimeout!");
+                //Try reading Data from Stream
+                int ret = preader.ReadData(in);
+                if (ret == 0) {
+                    //Received good Packet
+                    byte[] bytes = preader.GetData();
+                    Packet p = new Packet(bytes);
+                    String text = p.toString();
+                    //String text = new String(bytes, Charset.forName("UTF-8"));
+                    System.out.println(text);
+                    client.Receive(text);
+                } else if(ret == -1){
+                    //Bad Connection, close it!!
+                    client.server.removeClient(client);
+                } else {
+                    //Received bad Packet, ignore it
+                }
             } catch (Exception e) {
                 e.printStackTrace();
-                client.close();
+                client.server.removeClient(client);
             }
         }
     }
@@ -29,7 +45,10 @@ public class ConnectionRead extends Thread {
     public ConnectionRead(DataInputStream in, Connection client) {
         this.in = in;
         this.client = client;
+        preader = new PacketReader();
         running = true;
+        
+        
     }
     
     public void close(){
