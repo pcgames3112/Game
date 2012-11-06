@@ -1,0 +1,9 @@
+package game.GraphicEngine;
+
+import static org.lwjgl.opengl.GL11.*;
+
+public class GGDrawable {
+	
+	public void draw();
+	
+}

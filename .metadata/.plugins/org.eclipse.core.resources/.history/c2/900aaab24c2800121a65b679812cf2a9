@@ -1,0 +1,24 @@
+package game.GraphicEngine;
+
+public class GGNode extends GGObject {
+
+	public static GGNode create() {
+		GGNode newObject = new GGNode();
+		
+		if(newObject.init()) {
+			return newObject;
+		}
+		
+		return null;	
+	}
+	
+	protected GGNode() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private boolean init() {
+		return true;
+	}
+
+}

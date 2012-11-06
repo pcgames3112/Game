@@ -1,0 +1,23 @@
+package game.GraphicEngine;
+
+/** the basic object for everything in the engine */
+public class GGObject {
+	public static GGObject create() {
+		GGObject newObject = new GGObject();
+		
+		if(newObject.init()) {
+			return newObject;
+		}
+		
+		return null;	
+	}
+	
+	private boolean init() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private GGObject() {
+
+	}
+}

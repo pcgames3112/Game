@@ -1,0 +1,6 @@
+package game.GraphicEngine;
+
+/** Not a subclass of GGObject because */
+public class GGPosition : GGObject{
+	public 
+}

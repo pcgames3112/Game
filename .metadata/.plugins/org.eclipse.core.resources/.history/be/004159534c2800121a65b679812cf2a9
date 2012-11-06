@@ -1,0 +1,9 @@
+package game.GraphicEngine;
+
+public class GGNode extends GGObject {
+
+	private GGNode() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,11 @@
+package game.GraphicEngine;
+
+/** Not a subclass of GGObject because */
+public class GGPosition extends GGObject{
+	protected float posX = 0.f;
+	protected float posY = 0.f;
+	protected float posZ = 0.f;
+	
+	
+	
+}

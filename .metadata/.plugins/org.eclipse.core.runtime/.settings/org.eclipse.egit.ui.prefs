@@ -1,5 +1,4 @@
-#Wed Oct 10 18:21:27 CEST 2012
-show_initial_config_dialog=false
-eclipse.preferences.version=1
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>added some importent files</message>\n<message>added some random files (-;</message>\n<message>first window</message>\n<message>added as eclipse project (btw\: added .gitignore)</message>\n</messages>
 commit_dialog_push_upstream=true
-commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>added some random files (-;</message>\n<message>first window</message>\n<message>added as eclipse project (btw\: added .gitignore)</message>\n</messages>
+eclipse.preferences.version=1
+show_initial_config_dialog=false

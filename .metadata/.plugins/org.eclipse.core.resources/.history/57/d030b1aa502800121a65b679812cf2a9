@@ -1,0 +1,25 @@
+package game.GraphicEngine;
+
+public class GGNode extends GGObject {
+
+	protected GGPosition position = GGPosition.create();
+	
+	public static GGNode create() {
+		GGNode newObject = new GGNode();
+		
+		if(newObject.init()) {
+			return newObject;
+		}
+		
+		return null;	
+	}
+	
+	protected GGNode() {
+		super();
+	}
+
+	private boolean init() {
+		return true;
+	}
+
+}

@@ -1,0 +1,22 @@
+package game.GraphicEngine;
+
+public class GGObject {
+	public static GGDrawable create() {
+		GGObject newObject = new GGObject();
+		
+		if(newObject.init()) {
+			return newObject;
+		}
+		
+		return null;	
+	}
+	
+	private boolean init() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private GGDrawable() {
+		// TODO Auto-generated constructor stub
+	}
+}

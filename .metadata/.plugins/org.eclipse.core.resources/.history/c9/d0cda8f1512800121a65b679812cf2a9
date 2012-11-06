@@ -1,0 +1,42 @@
+package game.GraphicEngine;
+
+import static org.lwjgl.opengl.GL11.*;
+
+import java.util.Vector;
+
+public class GGNode extends GGObject {
+
+	protected GGPosition position = GGPosition.create();
+	
+	Vector<GGNode> children = new Vector<GGNode>();
+	
+	public static GGNode create() {
+		GGNode newObject = new GGNode();
+		
+		if(newObject.init()) {
+			return newObject;
+		}
+		
+		return null;
+	}
+	
+	protected GGNode() {
+		super();
+	}
+
+	private boolean init() {
+		return true;
+	}
+	
+	public void visit() {
+		// do my stuff
+		
+		
+		glPushMatrix();
+		
+		// do my children stuff
+		
+		glPopMatrix();
+	}
+
+}

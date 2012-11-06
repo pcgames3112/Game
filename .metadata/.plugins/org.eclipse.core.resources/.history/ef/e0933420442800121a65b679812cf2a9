@@ -1,0 +1,92 @@
+package game;
+
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+
+import org.lwjgl.BufferUtils;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import static org.lwjgl.opengl.GL11.*;
+
+
+
+public class Game {
+
+	boolean finished = false;
+	
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("OK, lets go");
+        
+        Game game = new Game();
+        game.start();
+        
+    }
+    
+    protected void start() {
+    	try {
+			Display.setDisplayMode(new DisplayMode(800, 600));
+			Display.create();
+			
+			
+			
+			
+			Display.setTitle("Andreas Mutter ist nen Game o.0");
+		} catch (LWJGLException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+    	
+    	// init OPGL here
+    	
+    	
+    	
+    	// init OpenGL
+    	
+    	byte indexData[] = {0,1,2, 2,1,3};
+    	
+    	float vertexData[] = {0.0f,0.0f,0.0f, 1.0f,0.0f,0.0f, 0.0f,1.0f,0.0f, 1.0f,1.0f,0.0f};
+     
+    	FloatBuffer indexBuffer = BufferUtils.createFloatBuffer(indexData.length);
+    	IntBuffer vertexBuffer = BufferUtils.createIntBuffer(vertexData.length);
+    	
+    	indexBuffer.put(indexData);
+    	s_indices.put(s_cubeIndices);
+    	}
+    	
+    	while (!Display.isCloseRequested()) {
+    	    // Clear the screen and depth buffer
+    	    //GL20.glC(GL12.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);	
+    		
+    		glColor3f(1, 1, 1);
+    		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    		glEnableClientState(GL_VERTEX_ARRAY);
+    		glVertexPointer(3, 0, s_coords);
+    		glDrawElements(GL_TRIANGLES, s_indices);
+    		
+
+    		handleKeyEvents();
+    		//
+    		
+    		Display.update();
+    	}
+    	
+    	Display.destroy();
+    	System.out.println("Quit");
+    }
+
+	protected void handleKeyEvents() {
+		while (Keyboard.next()) {
+			if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) {
+				finished = true;
+			}
+		}
+		
+	}
+    
+    
+}

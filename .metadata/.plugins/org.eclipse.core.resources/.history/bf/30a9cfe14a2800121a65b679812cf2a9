@@ -1,0 +1,27 @@
+package game.GraphicEngine;
+
+import static org.lwjgl.opengl.GL11.*;
+
+import org.lwjgl.LWJGLException;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.opengl.Drawable;
+
+public class GGDrawable {
+	
+	public static GGDrawable create() {
+		GGDrawable newDrawable = new GGDrawable();
+		
+		if(newDrawable.init()) {
+			return newDrawable;
+		}
+		return null;	
+	}
+	
+	private GGDrawable() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void draw(){}
+	
+	
+}

@@ -1,0 +1,19 @@
+package game.GraphicEngine;
+
+/** Not a subclass of GGObject because */
+public class GGPosition extends GGObject{
+	protected float posX = 0.f;
+	protected float posY = 0.f;
+	protected float posZ = 0.f;
+	
+	/** There should be factory for every children from this class named create. */
+	public static GGPosition create() {
+		GGPosition newObject = new GGPosition();
+		return newObject;
+	}
+	
+	protected GGPosition() {
+		super();
+	}
+	
+}

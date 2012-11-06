@@ -1,0 +1,18 @@
+package game.GraphicEngine;
+
+import static org.lwjgl.opengl.GL11.*;
+
+public class GGDrawable {
+	
+	public static GGDrawable create() {
+		
+	}
+	
+	private GGDrawable() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void draw(){}
+	
+	
+}

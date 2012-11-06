@@ -1,0 +1,5 @@
+package game.GraphicEngine;
+
+public abstract class GGDrawable {
+	abstract public void draw();
+}

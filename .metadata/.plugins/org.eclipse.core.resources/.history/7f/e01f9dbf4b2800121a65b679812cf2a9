@@ -1,0 +1,25 @@
+package game.GraphicEngine;
+
+/** the basic object for everything in the engine */
+public class GGObject {
+	
+	/** there should be factory for every children from this class named create */
+	public static GGObject create() {
+		GGObject newObject = new GGObject();
+		
+		if(newObject.init()) {
+			return newObject;
+		}
+		
+		return null;	
+	}
+	
+	/** to initialize all the stuff. Returns false if something went wrong */
+	private boolean init() {
+		return true;
+	}
+
+	private GGObject() {
+
+	}
+}

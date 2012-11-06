@@ -1,0 +1,5 @@
+package game.GraphicEngine;
+
+public class GGObject {
+
+}
